@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Flexbox Example</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Main layout using Flexbox */
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Full viewport height */
+        }
+
+        /* Sidebar + Content section */
+        .main {
+            display: flex;
+            flex: 1;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: #f4f4f4;
+            width: 250px;
+            padding: 20px;
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+
+        /* Content area */
+        .content {
+            flex: 1;
+            background-color: #e5e5e5;
+            padding: 20px;
+        }
+
+        /* Articles in the content area */
+        .article {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .main {
+                flex-direction: column; /* Stack sidebar and content */
+            }
+
+            .sidebar {
+                width: 100%; /* Full width for sidebar on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header>
+        <h1>Complex Flexbox Layout</h1>
+    </header>
+
+    <!-- Main content area with sidebar and content -->
+    <div class="main">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Sidebar</h2>
+            <nav>
+                <ul>
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li><a href="#">Link 4</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content area -->
+        <section class="content">
+            <article class="article">
+                <h2>Article 1</h2>
+                <p>This is the content of article 1. Flexbox makes it easy to create flexible layouts.</p>
+            </article>
+
+            <article class="article">
+                <h2>Article 2</h2>
+                <p>This is the content of article 2. With flexbox, you can control the distribution of space between items.</p>
+            </article>
+
+            <article class="article">
+                <h2>Article 3</h2>
+                <p>This is the content of article 3. Flexbox can align items both vertically and horizontally.</p>
+            </article>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Footer Content &copy; 2024</p>
+    </footer>
+</div>
+
+</body>
+</html>
