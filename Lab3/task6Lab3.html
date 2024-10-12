@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="task6Lab3.css">
+</head>
+<body>
+    <div class="cart-container">
+        <div class="cart-header">
+            <h2>My Cart</h2>
+            <button class="close-btn">X</button>
+        </div>
+        <form class="cart-form">
+            <div class="cart-item">
+                <span>Product 1</span>
+                <span>$10</span>
+                <input type="number" value="2" min="1">
+                <span>$20</span>
+                <button type="button" class="remove-btn">X</button>
+            </div>
+            <div class="cart-item">
+                <span>Product 3</span>
+                <span>$30</span>
+                <input type="number" value="6" min="1">
+                <span>$180</span>
+                <button type="button" class="remove-btn">X</button>
+            </div>
+            <div class="cart-item">
+                <span>Product 4</span>
+                <span>$40</span>
+                <input type="number" value="1" min="1">
+                <span>$40</span>
+                <button type="button" class="remove-btn">X</button>
+            </div>
+            <div class="cart-total">
+                <span>Total</span>
+                <span>$240</span>
+            </div>
+            <div class="cart-discount">
+                <span>Total (including discount)</span>
+                <span class="discount-price">$120</span>
+            </div>
+            <div class="cart-actions">
+                <button type="button" class="close-btn">Close</button>
+                <button type="button" class="checkout-btn">Checkout</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
