@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up Page with Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        input, select {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sign Up</h1>
+    <form id="signUpForm">
+        <input type="text" id="name" placeholder="Enter your name" required>
+        <div id="nameError" class="error"></div>
+        
+        <input type="text" id="contact" placeholder="Enter your contact number" required>
+        <div id="contactError" class="error"></div>
+        
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <div id="emailError" class="error"></div>
+        
+        <input type="password" id="password" placeholder="Enter your password" required>
+        <div id="passwordError" class="error"></div>
+        
+        <div>
+            Gender:
+            <input type="radio" name="gender" id="male" value="male"> Male
+            <input type="radio" name="gender" id="female" value="female"> Female
+        </div>
+        <div id="genderError" class="error"></div>
+        
+        <div>
+            <input type="checkbox" id="terms"> I agree to the Terms and Conditions
+        </div>
+        <div id="termsError" class="error"></div>
+
+        <button type="submit">Sign Up</button>
+    </form>
+    
+    <script>
+        // Regular expressions for validation
+        const nameRegex = /^[a-zA-Z\s]{3,30}$/;
+        const contactRegex = /^\d{10}$/;
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+        // Listen for form submission
+        document.getElementById("signUpForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Validate each field and show error messages if invalid
+            let isValid = true;
+            
+            // Name Validation
+            const name = document.getElementById("name").value;
+            if (!nameRegex.test(name)) {
+                document.getElementById("nameError").textContent = "Name must be 3-30 characters long and contain only letters.";
+                isValid = false;
+            } else {
+                document.getElementById("nameError").textContent = "";
+            }
+
+            // Contact Validation
+            const contact = document.getElementById("contact").value;
+            if (!contactRegex.test(contact)) {
+                document.getElementById("contactError").textContent = "Contact must be a 10-digit number.";
+                isValid = false;
+            } else {
+                document.getElementById("contactError").textContent = "";
+            }
+
+            // Email Validation
+            const email = document.getElementById("email").value;
+            if (!emailRegex.test(email)) {
+                document.getElementById("emailError").textContent = "Enter a valid email address.";
+                isValid = false;
+            } else {
+                document.getElementById("emailError").textContent = "";
+            }
+
+            // Password Validation
+            const password = document.getElementById("password").value;
+            if (!passwordRegex.test(password)) {
+                document.getElementById("passwordError").textContent = "Password must be at least 8 characters long, including a letter and a number.";
+                isValid = false;
+            } else {
+                document.getElementById("passwordError").textContent = "";
+            }
+
+            // Gender Validation
+            const male = document.getElementById("male").checked;
+            const female = document.getElementById("female").checked;
+            if (!male && !female) {
+                document.getElementById("genderError").textContent = "Please select a gender.";
+                isValid = false;
+            } else {
+                document.getElementById("genderError").textContent = "";
+            }
+
+            // Terms and Conditions Validation
+            const terms = document.getElementById("terms").checked;
+            if (!terms) {
+                document.getElementById("termsError").textContent = "You must agree to the terms and conditions.";
+                isValid = false;
+            } else {
+                document.getElementById("termsError").textContent = "";
+            }
+
+            // If all fields are valid, display a success message
+            if (isValid) {
+                alert("Sign-up successful!");
+                document.getElementById("signUpForm").reset();
+            }
+        });
+    </script>
+
+</body>
+</html>

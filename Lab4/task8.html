@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatic Image Slider</title>
+    <style>
+        /* Center the image slider */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Style the image slider container */
+        .slider-container {
+            width: 80%;
+            max-width: 500px;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        /* Style for the image */
+        .slider-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 1s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        /* Display the current image */
+        .slider-container img.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slider-container">
+        <img src="https://via.placeholder.com/500x300?text=Image+1" alt="Image 1" class="active">
+        <img src="https://via.placeholder.com/500x300?text=Image+2" alt="Image 2">
+        <img src="https://via.placeholder.com/500x300?text=Image+3" alt="Image 3">
+        <img src="https://via.placeholder.com/500x300?text=Image+4" alt="Image 4">
+    </div>
+
+    <script>
+        // Select all images inside the slider
+        const images = document.querySelectorAll(".slider-container img");
+        let currentIndex = 0;  // Track the current image index
+        const delay = 2000;    // Delay in milliseconds (2 seconds)
+
+        // Function to show the next image
+        function showNextImage() {
+            // Hide the current image
+            images[currentIndex].classList.remove("active");
+
+            // Move to the next image index, looping back to the start if necessary
+            currentIndex = (currentIndex + 1) % images.length;
+
+            // Show the next image
+            images[currentIndex].classList.add("active");
+        }
+
+        // Automatically call showNextImage every `delay` milliseconds
+        setInterval(showNextImage, delay);
+    </script>
+
+</body>
+</html>

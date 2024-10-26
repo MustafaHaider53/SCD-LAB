@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Palindrome Checker</h1>
+    <input type="text" id="inputString" placeholder="Enter a string">
+    <button onclick="checkPalindrome()">Check</button>
+    <div id="result"></div>
+
+    <script>
+        function checkPalindrome() {
+            // Get the input string and prepare the result area
+            const str = document.getElementById("inputString").value;
+            const resultDiv = document.getElementById("result");
+
+            // Check if the string is a palindrome
+            const cleanedStr = str.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+            const reversedStr = cleanedStr.split('').reverse().join('');
+
+            if (cleanedStr === reversedStr && cleanedStr.length > 0) {
+                resultDiv.innerHTML = `"${str}" is a palindrome!`;
+                resultDiv.style.color = "green";
+            } else {
+                resultDiv.innerHTML = `"${str}" is not a palindrome.`;
+                resultDiv.style.color = "red";
+            }
+        }
+    </script>
+
+</body>
+</html>
